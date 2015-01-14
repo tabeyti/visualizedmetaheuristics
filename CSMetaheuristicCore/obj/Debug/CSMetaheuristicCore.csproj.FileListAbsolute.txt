@@ -1,0 +1,1 @@
+C:\projects\community\visualizedmetaheuristics\CSMetaheuristicCore\obj\Debug\CSMetaheuristicCore.csprojResolveAssemblyReference.cache

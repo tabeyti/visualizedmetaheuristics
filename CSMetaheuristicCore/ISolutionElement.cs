@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TSP_Grasp
+namespace CSMetaheuristicCore
 {
-  public interface IElement
+  public interface ISolutionElement
   {
-    IValue Value { get; set; }
-
+    int Id { get; set; }
+    
   } // end interface IElement
 
 }

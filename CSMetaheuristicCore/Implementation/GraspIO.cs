@@ -9,27 +9,12 @@ using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
-using TSP_Grasp;
+using CSMetaheuristicCore;
 
-namespace GraspAlgo
+namespace CSMetaheuristicCore.Implementation
 {
 	public class GraspIO
 	{
-		// general class variables
-		
-	
-		
-		// ====================================================================
-		// Default Constructor
-		// ====================================================================
-	
-		public GraspIO()
-		{
-		
-		} // end GraspIO()
-
-
-
     // ==== GetPaths ======================================================
     //
     // Description:
@@ -46,7 +31,7 @@ namespace GraspAlgo
 
     public static string[] GetPaths(string dir)
     {
-        return Directory.GetFiles(dir);
+      return Directory.GetFiles(dir);
 
     } // end GetPaths(string dir)
 
@@ -66,17 +51,17 @@ namespace GraspAlgo
 
     public static string ReadHeader(string path)
     {
-        StreamReader reader = new StreamReader(path);
-        string header = "";
-        string line = "";
+      StreamReader reader = new StreamReader(path);
+      string header = "";
+      string line = "";
 
-        // traverses down to node data
-        while ("NODE_COORD_SECTION" != (line = reader.ReadLine()))
-            {
-            header += line + Environment.NewLine;
-            }
+      // traverses down to node data
+      while ("NODE_COORD_SECTION" != (line = reader.ReadLine()))
+      {
+      header += line + Environment.NewLine;
+      }
 
-        return header;
+      return header;
 
     } // end ReadHeader(string path)
 		
@@ -98,12 +83,12 @@ namespace GraspAlgo
 		//
 		// ====================================================================
 		
-		public static List<Grasp.Node> ReadFile(string path)
+		public static List<TspElement> ReadFile(string path)
 		{
 			string tempString = "";
 			string[] tempStringArray;
-      Grasp.Node node;
-      List<Grasp.Node> nodeList = new List<Grasp.Node>();
+      TspElement node;
+      List<TspElement> nodeList = new List<TspElement>();
       StreamReader reader = new StreamReader(path);
 			
 			// traverses down to node data
@@ -117,9 +102,11 @@ namespace GraspAlgo
           StringSplitOptions.RemoveEmptyEntries);
 				
         // add node to the list
-        node = new Grasp.Node(Convert.ToDouble(tempStringArray[1]),
-          Convert.ToDouble(tempStringArray[2]),
-          Convert.ToInt32(tempStringArray[0])-1);
+        node = new TspElement(
+          Convert.ToInt32(tempStringArray[0])-1,
+          Convert.ToDouble(tempStringArray[1]),
+          Convert.ToDouble(tempStringArray[2])
+          );
         nodeList.Add(node);
 			}
 				

@@ -4,18 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TSP_Grasp
+namespace CSMetaheuristicCore
 {
   /// <summary>
-  /// Interface for the Solution object.
+  /// Interface for the SolutionBase object.
   /// </summary>
-  public interface ISolution
+  public interface ISolution<out T>
   {
-    IValue Value { get; }
+    T Value { get; }
 
-    void AddElement(IElement element);
+    void AddElement(ISolutionElement element);
 
-    void RemoveElement(IElement element);
+    void RemoveElement(ISolutionElement element);
+
+    ISolutionElement GetElement(int index);
 
   } // end interface ISolution<IElement>
 }
